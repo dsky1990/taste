@@ -21,6 +21,168 @@
 		document.body.appendChild(script);
 	}
 	function init() {
+    var addressList = [
+      {
+        name: '',
+        address: '湖北省密码管理局',
+        type: '',
+        time: '中餐营业到14:00, 晚餐营业到21:00',
+        info: '',
+        recommend: '铜锅牛尾 辣子黄骨鱼 材火豆腐 鸡汤'
+      },
+      {
+        name: '',
+        address: '恩施土家族苗族自治州电网管理局驻武汉办事处',
+        type: '恩施菜',
+        time: '白天11点至14点, 晚上17点至21点',
+        info: '',
+        recommend: '强烈推荐沫沫鸭 炕土豆 腊猪蹄火锅 豆瓣鲫鱼 腊肉炸广椒 苞谷饭 然后还有恩施最具代表性的张关合渣'
+      },
+      {
+        name: '福哇酒楼',
+        address: '福哇酒楼',
+        type: '',
+        time: '11:00-14:00, 17:00-20:00',
+        info: '',
+        recommend: ' 我们当天点了 烧鸡 鱼泡 辣椒炒牛肉丝 干子肉丝 一个猪肝平菇汤'
+      },
+      {
+        name: '翠翠家常菜',
+        address: '翠翠家常菜',
+        type: '家常菜',
+        time: '11:00-14:30, 16:30-20:30',
+        info: '',
+        recommend: '都是招牌菜'
+      },
+      {
+        name: '重庆辣子鱼',
+        address: '重庆辣子鱼平价美食城',
+        type: '鱼',
+        time: '中午11点-2点，下午5点-10点',
+        info: '',
+        recommend: '招牌重庆辣子鱼 蜂窝玉米 麻花烧肥肠'
+      },
+      {
+        name: '黑皮烧烤',
+        address: '黑皮烧烤',
+        type: '烧烤',
+        time: '周二休息',
+        info: '在武广商圈背后那边民意四路,地铁的班子可以直接转1号线到友谊路站下车导航搜“黑皮烧烤”步行大约10分钟',
+        recommend: '肉筋 爪子'
+      },
+      {
+        name: '淘气牛杂',
+        address: '淘气牛杂馆',
+        type: '牛杂',
+        time: '早上过早那个点到半夜12点或者凌晨1，2点',
+        info: '',
+        recommend: '牛杂粉，嫩牛肉，生烫腰花，财鱼片，牛瓦沟'
+      },
+      {
+        name: '老四家常菜',
+        address: '淘气牛杂旁边小区里面',
+        type: '家常菜',
+        time: '下午6点开始到凌晨3点',
+        info: '',
+        recommend: '牛杂粉，嫩牛肉，生烫腰花，财鱼片，牛瓦沟'
+      },
+      {
+        name: '苗栗路大腰子',
+        address: '串串副食店',
+        type: '腰子',
+        time: '14:00开门东西卖完关门',
+        info: '直接搜索“串串副食店”到了苗栗路天桥之后看到有一个皇冠蛋糕背后的小区里面坐满了人的就是',
+        recommend: '牛杂粉，嫩牛肉，生烫腰花，财鱼片，牛瓦沟'
+      },
+      {
+        name: '虾搞',
+        address: '虾搞油焖大虾馆',
+        type: '虾',
+        time: '下午五点开门到凌晨一两点',
+        info: '',
+        recommend: '香辣蟹 羊肉锅仔'
+      },
+      {
+        name: '阿斌大排档',
+        address: '学斌大排档',
+        type: '大排档',
+        time: '下午5点就出来了一直到凌晨2-3点',
+        info: '',
+        recommend: '带鱼，剥皮鱼，臭鲑鱼，刁子鱼糖醋排骨，烧鸡公，蛋白牛筋，牛肉锅仔,夏天还可以吃到油焖大虾、蹦蹦和鳝鱼'
+      },
+      {
+        name: '小黄鱼酒楼',
+        address: '江岸区合作路30号',
+        type: '鱼',
+        time: '营业时间晚上至9点',
+        info: '',
+        recommend: '小黄鱼 划水'
+      },
+      {
+        name: '老挖正宗烤财鱼虾球',
+        address: '老挖正宗烤财鱼虾球',
+        type: '虾',
+        time: '17:00-凌晨2点',
+        info: '',
+        recommend: '财鱼 虾球'
+      },
+      {
+        name: '张记牛肉牛杂萝卜汤',
+        address: '古田二路与古词路路口',
+        type: '',
+        time: '17:00—22:00',
+        info: '',
+        recommend: '财鱼 虾球'
+      },
+      {
+        name: '王二娃',
+        address: '王二娃',
+        type: '',
+        time: '11:00-22:00',
+        info: '',
+        recommend: '酸菜鱼 乌江鱼  烧鸡公'
+      },
+      {
+        name: '满天星太珍火锅',
+        address: '满天星太珍火锅',
+        type: '',
+        time: '17:00-02:00',
+        info: '',
+        recommend: ''
+      },
+      {
+        name: '四川丁源火锅',
+        address: '二七横路79号',
+        type: '火锅',
+        time: '11:00-24:00',
+        info: '',
+        recommend: '炸酥肉'
+      },
+      {
+        name: '全刀子家常菜',
+        address: '大兴路69号',
+        type: '家常菜',
+        time: '11:00-24:00',
+        info: '',
+        recommend: '麻花梅子肉汤 卤蛋烧蹄花 干煸藕丝 青蛙烧鳝鱼,田螺,干烧小洗(喜)头鱼'
+      },
+      {
+        name: '三三零招待所',
+        address: '三三零家常菜',
+        type: '家常菜',
+        time: '17:00后',
+        info: '',
+        recommend: '滑蛋牛肉 汆汤圆子 酒鬼牛肉'
+      },
+      {
+        name: '赤浪川菜馆',
+        address: '妙墩横路8号',
+        type: '川菜',
+        time: '午 11:00-14:30   晚 16:30-22:30',
+        info: '',
+        recommend: '干煸牛肉丝  牙签肉 半边鱼 嫰腰花 鱼香肉丝 干煸藕丝'
+      },
+    ];
 		var map = new BMap.Map("container");            // 创建Map实例
 	  map.centerAndZoom("武汉",13);                 //启用滚轮放大缩小
 	}  
