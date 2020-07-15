@@ -7,20 +7,23 @@
 </head>
 <body>
   <script>
-    window.addEventListener('load', async () => {
-      if(window.ethereum.isImToken){
-        const imToken = window.imToken
-        imToken.callAPI('native.toast', {
-          type: 'info',
-          message: 'imToken',
-          align: 'top',
-          model: 'banner',
-          duration: 1000 * 3,
-        })
-      } else {
-        alert('no imToken')
-      }
-    });
+    try {
+      window.addEventListener('load', async () => {
+        if(window.ethereum.isImToken){
+          imToken.callAPI('native.toast', {
+            type: 'info',
+            message: 'imToken',
+            align: 'top',
+            model: 'banner',
+            duration: 1000 * 3,
+          })
+        } else {
+          alert('no imToken')
+        }
+      });
+    } catch (error) {
+      alert('error: ', error)
+    }
   </script>
 </body>
 </html>
