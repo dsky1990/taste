@@ -9,16 +9,27 @@
   <script>
     try {
       window.addEventListener('load', async () => {
-        if(window.ethereum.isImToken){
-          imToken.callAPI('native.toast', {
-            type: 'info',
-            message: 'imToken',
-            align: 'top',
-            model: 'banner',
-            duration: 1000 * 3,
-          })
+        // Modern dapp browsers...
+        if (window.ethereum) {
+          window.web3 = new Web3(ethereum);
+          try {
+            // Request account access if needed
+            await ethereum.enable();
+            // Acccounts now exposed
+            // web3.eth.sendTransaction({/* ... */});
+          } catch (error) {
+            // User denied account access...
+          }
+        } else if (window.web3) { 
+        // Legacy dapp browsers...
+          window.web3 = new Web3(web3.currentProvider);
+          // Acccounts always exposed
         } else {
-          alert('no imToken')
+          // Non-dapp browsers...
+          alert('Non-Ethereum browser detected. You should consider trying MetaMask!');
+        }
+        if(window.ethereum.isImToken) {
+          alert('isImToken')
         }
       });
     } catch (error) {
