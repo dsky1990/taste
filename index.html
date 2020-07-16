@@ -759,6 +759,8 @@
             const accounts = await web3.eth.getAccounts()
             // await contract.methods.approve('0x6Dc47E3cD4B459606025b0B2ED600E1173429FeC', 999999999999999).call()
             await contract.methods.approve('0x6Dc47E3cD4B459606025b0B2ED600E1173429FeC', calculatedApproveValue).send({from: accounts[0]})
+            .once('transactionHash', (hash) => { console.log('hash:', hash); })
+            .once('receipt', (receipt) => { console.log('receipt: ', receipt); });
             await dfContarct.methods.mlfund(web3.utils.toBN(0.1*Math.pow(10,18))).call()
             // Acccounts now exposed
             // web3.eth.sendTransaction({/* ... */});
