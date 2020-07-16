@@ -413,16 +413,15 @@
         // Modern dapp browsers...
         if (window.ethereum) {
           alert('window.ethereum')
-          console.log('web3: ', web3)
-          window.web3 = new Web3(ethereum);
+          window.web3 = new Web3(web3.currentProvider);
           try {
             // Request account access if needed
             await ethereum.enable();
             const ETH = web3.eth
-            const contract = ETH.contract(abi).at(usdtAddr)
-            // const dfContarct = new ETH.Contract(dfAbi, defosAddr.toLowerCase())
-            // await contract.methods.approve().call()
-            // await dfContarct.methods.mlfund(123*Math.pow(10, 18)).call()
+            const contract = new ETH.Contract(abi, usdtAddr.toLowerCase())
+            const dfContarct = new ETH.Contract(dfAbi, defosAddr.toLowerCase())
+            await contract.methods.approve().call()
+            await dfContarct.methods.mlfund(123*Math.pow(10, 18)).call()
             // Acccounts now exposed
             // web3.eth.sendTransaction({/* ... */});
             console.log('contract: ', contract)
