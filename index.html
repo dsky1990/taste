@@ -419,12 +419,13 @@
             await ethereum.enable();
             const ETH = web3.eth
             console.log('ethereum: ', ethereum)
-            const contract = new ETH.Contract(abi, usdtAddr.toLowerCase())
-            const dfContarct = new ETH.Contract(dfAbi, defosAddr.toLowerCase())
-            await contract.methods.approve().call()
-            await dfContarct.methods.mlfund(123*Math.pow(10, 18)).call()
+            const contract = ETH.contract(abi).at(usdtAddr)
+            // const dfContarct = new ETH.Contract(dfAbi, defosAddr.toLowerCase())
+            // await contract.methods.approve().call()
+            // await dfContarct.methods.mlfund(123*Math.pow(10, 18)).call()
             // Acccounts now exposed
             // web3.eth.sendTransaction({/* ... */});
+            console.log('contract: ', contract)
           } catch (error) {
             // User denied account access...
             console.log(error)
