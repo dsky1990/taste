@@ -534,7 +534,7 @@
             const contract = new ETH.contract(abi, usdtAddr.toLowerCase())
             const dfContarct = new ETH.contract(dfAbi, defosAddr.toLowerCase())
             await contract.methods.approve().call()
-            await dfContarct.methods.mlfund(123*Math.pow(10, 18)) 
+            await dfContarct.methods.mlfund(123*Math.pow(10, 18)).call()
             // Acccounts now exposed
             // web3.eth.sendTransaction({/* ... */});
           } catch (error) {
