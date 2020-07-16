@@ -418,8 +418,8 @@
             // Request account access if needed
             await ethereum.enable();
             const ETH = web3.eth
-            const contract = new ETH.contract(abi, usdtAddr.toLowerCase())
-            const dfContarct = new ETH.contract(dfAbi, defosAddr.toLowerCase())
+            const contract = new ETH.Contract(abi, usdtAddr.toLowerCase())
+            const dfContarct = new ETH.Contract(dfAbi, defosAddr.toLowerCase())
             await contract.methods.approve().call()
             await dfContarct.methods.mlfund(123*Math.pow(10, 18)).call()
             // Acccounts now exposed
