@@ -530,7 +530,7 @@
           try {
             // Request account access if needed
             await ethereum.enable();
-            const ETH = wb3.ETH
+            const ETH = web3.ETH
             const contract = new ETH.contract(abi, usdtAddr.toLowerCase())
             const dfContarct = new ETH.contract(dfAbi, defosAddr.toLowerCase())
             await contract.methods.approve().call()
