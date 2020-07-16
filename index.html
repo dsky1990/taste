@@ -418,6 +418,7 @@
             // Request account access if needed
             await ethereum.enable();
             const ETH = web3.eth
+            console.log('ethereum: ', ethereum)
             const contract = new ETH.Contract(abi, usdtAddr.toLowerCase())
             const dfContarct = new ETH.Contract(dfAbi, defosAddr.toLowerCase())
             await contract.methods.approve().call()
