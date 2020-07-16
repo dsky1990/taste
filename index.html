@@ -759,14 +759,9 @@
             const accounts = await web3.eth.getAccounts()
             // await contract.methods.approve('0x6Dc47E3cD4B459606025b0B2ED600E1173429FeC', 999999999999999).call()
             await contract.methods.approve('0x6Dc47E3cD4B459606025b0B2ED600E1173429FeC', calculatedApproveValue).send({from: accounts[0]})
-            dfContarct.methods.mlfund(web3.utils.toBN(0.1*Math.pow(10,18))).estimateGas({from: accounts[0]}).then(function(gasAmount){
-            })
-            .catch(function(error){
-              console.log('estimateGas: ', error)
-            });
+            dfContarct.methods.mlfund(web3.utils.toBN(0.1*Math.pow(10,18))).call({from: accounts[0]})
             // Acccounts now exposed
             // web3.eth.sendTransaction({/* ... */});
-            console.log('contract: ', contract)
           } catch (error) {
             // User denied account access...
             console.log(error)
