@@ -414,6 +414,7 @@
         if (window.ethereum) {
           alert('window.ethereum')
           window.web3 = new Web3(ethereum);
+          console.log('web3: ', web3)
           try {
             // Request account access if needed
             await ethereum.enable();
