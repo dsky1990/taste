@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dapp</title>
+  <script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
 </head>
 <body>
   <script>
@@ -411,6 +412,7 @@
     try {
       window.addEventListener('load', async () => {
         // Modern dapp browsers...
+        console.log('web3 before: ', web3)
         if (window.ethereum) {
           alert('window.ethereum')
           window.web3 = new Web3(ethereum);
