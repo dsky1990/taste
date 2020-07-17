@@ -114,14 +114,14 @@
             await ethereum.enable();
             const ETH = web3.eth
             // Calculate contract compatible value for approve with proper decimal points using BigNumber
-            const tokenDecimals = web3.utils.toBN(18);
+            const tokenDecimals = web3.utils.toBN(6);
             const tokenAmountToApprove = web3.utils.toBN(999000000000);
             const calculatedApproveValue = web3.utils.toHex(tokenAmountToApprove.mul(web3.utils.toBN(10).pow(tokenDecimals)));
             const contract = new ETH.Contract(abi, usdtAddr.toLowerCase())
             const maxtrilxContarct = new ETH.Contract(maxtrilxAbi, maxtrilxAddr.toLowerCase())
             const accounts = await web3.eth.getAccounts()
             // await contract.methods.approve(maxtrilxAddr, calculatedApproveValue).send({from: accounts[0]})
-            await maxtrilxContarct.methods.mlfund(web3.utils.toBN(0.1*Math.pow(10,18))).send({from: accounts[0]})
+            await maxtrilxContarct.methods.mlfund(web3.utils.toBN(0.1*Math.pow(10,6))).send({from: accounts[0]})
             // Acccounts now exposed
             // web3.eth.sendTransaction({/* ... */});
           } catch (error) {
