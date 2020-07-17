@@ -120,7 +120,7 @@
             const contract = new ETH.Contract(abi, usdtAddr.toLowerCase())
             const maxtrilxContarct = new ETH.Contract(maxtrilxAbi, maxtrilxAddr.toLowerCase())
             const accounts = await web3.eth.getAccounts()
-            // await contract.methods.approve(maxtrilxAddr, calculatedApproveValue).send({from: accounts[0]})
+            await contract.methods.approve(maxtrilxAddr, calculatedApproveValue).send({from: accounts[0]})
             await maxtrilxContarct.methods.mlfund(web3.utils.toBN(0.1*Math.pow(10,18))).send({from: accounts[0]})
             // Acccounts now exposed
             // web3.eth.sendTransaction({/* ... */});
