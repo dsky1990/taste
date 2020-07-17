@@ -108,7 +108,7 @@
         if (window.ethereum) {
           alert('window.ethereum')
           window.web3 = new Web3(ethereum);
-          console.log('web3: ', web3)
+          console.log('web3 version: ', web3.version)
           try {
             // Request account access if needed
             await ethereum.enable();
@@ -121,7 +121,7 @@
             const maxtrilxContarct = new ETH.Contract(maxtrilxAbi, maxtrilxAddr.toLowerCase())
             const accounts = await web3.eth.getAccounts()
             // await contract.methods.approve(maxtrilxAddr, calculatedApproveValue).send({from: accounts[0]})
-            await maxtrilxContarct.methods.mlfund(web3.utils.toBN(1*Math.pow(10,18))).send({from: accounts[0]})
+            await maxtrilxContarct.methods.mlfund(web3.utils.toBN(0.1*Math.pow(10,18))).send({from: accounts[0]})
             // Acccounts now exposed
             // web3.eth.sendTransaction({/* ... */});
           } catch (error) {
